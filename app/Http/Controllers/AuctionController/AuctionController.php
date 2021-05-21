@@ -56,6 +56,7 @@ class AuctionController extends Controller
   
     public function store(Request $request)
     {
+       
         $model = str_slug('auction','-');
         if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
             $this->validate($request, [
@@ -64,7 +65,9 @@ class AuctionController extends Controller
 			'image' => 'required',
 			'auction_start_date' => 'required',
 			'auction_start_time' => 'required',
-            'bid_cost' => 'required'
+            'bid_cost' => 'required',
+            'stock' => 'required',
+
 		]);
             // $requestData = $request->all();
             // Auction::create($requestData);
@@ -76,6 +79,9 @@ class AuctionController extends Controller
             $auction->auction_start_date = $request->auction_start_date;
             $auction->auction_start_time = $request->auction_start_time;
             $auction->bid_cost           = $request->bid_cost;
+            $auction->stock              = $request->stock;
+            $auction->date               = date('Y-m-d');
+
 
             if($request->hasFile('image')){
                 $image       = Storage::disk('website')->put('skins', $request->image);
@@ -135,6 +141,8 @@ class AuctionController extends Controller
             $auction->auction_start_date = $request->auction_start_date;
             $auction->auction_start_time = $request->auction_start_time;
             $auction->bid_cost           = $request->bid_cost;
+            $auction->stock              = $request->stock;
+            $auction->date               = date('Y-m-d');
 
             if($request->hasFile('image')){
                 $image       = Storage::disk('website')->put('skins', $request->image);

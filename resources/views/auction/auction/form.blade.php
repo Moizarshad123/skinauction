@@ -35,7 +35,8 @@
         {!! Form::number('bid_cost', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
         {!! $errors->first('bid_cost', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('price') ? 'has-error' : ''}}">
+</div>
+<div class="form-group {{ $errors->has('price') ? 'has-error' : ''}}">
     {!! Form::label('price', 'Price', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::number('price', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
@@ -53,13 +54,19 @@
     {!! Form::label('auction_start_time', 'Auction Start Time', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         <div class="input-group clockpicker">
-            <input type="text" class="form-control" value="09:30"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
+            <input name="auction_start_time" type="text" class="form-control" value="09:30"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span>
         </div>
         {{-- {!! Form::input('time', 'auction_start_time', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
         {!! $errors->first('auction_start_time', '<p class="help-block">:message</p>') !!} --}}
     </div>
+</div>
 
-    
+<div class="form-group {{ $errors->has('stock') ? 'has-error' : ''}}">
+    {!! Form::label('stock', 'Stock', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('stock', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+        {!! $errors->first('stock', '<p class="help-block">:message</p>') !!}
+    </div>
 </div>
 
 <div class="form-group {{ $errors->has('image') ? 'has-error' : ''}}">
