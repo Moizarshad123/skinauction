@@ -14,24 +14,21 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => ['admin','user']], fu
 });
 Route::get('auth/steam', 'Auth\AuthController@redirectToSteam')->name('auth.steam');
 Route::get('auth/steam/handle', 'Auth\AuthController@handle')->name('auth.steam.handle');
-
 Route::get('steamlogin','Auth\AuthController@handle');
-
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('tester',function(){
         return view('pages.testing');
 });
-Route::post('payment','Auth\CoinpaymentsController@Payment');
+
+//Route for coinpayment
+Route::get('payment','Auth\CoinpaymentsController@Payment');
     // 'CoinpaymentsController@Test');
 
 Route::group(['middleware' => 'guest'],function (){   
 
 
 });
-
-
-
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -285,6 +282,6 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin'], function ()
     Auth::routes();
 
 
-Route::resource('auction', 'AuctionController\\AuctionController');
-Route::resource('package', 'PackageController\\PackageController');
-Route::resource('package', 'PackageController\\PackageController');
+    Route::resource('auction', 'AuctionController\\AuctionController');
+    Route::resource('package', 'PackageController\\PackageController');
+    Route::resource('package', 'PackageController\\PackageController');

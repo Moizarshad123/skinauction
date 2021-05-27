@@ -16,7 +16,7 @@ return [
     /*
      * API Key (set in .env file) [http://steamcommunity.com/dev/apikey]
      */
-    'api_key' => env('STEAM_API_KEY', 'FF40CA1F6261FFFA96D3936D0630930F'),
+    'api_key' => env('STEAM_API_KEY', '08726517FBA959C86788D08C3D31917A'),
 
     /*
      * Is using https ?

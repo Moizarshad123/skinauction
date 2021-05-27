@@ -22,15 +22,15 @@ class CoinpaymentsController extends Controller
 
 
         $amount   = 10;
-        $currency = 'USD';
+        $currency = 'ETC';
         $cost = $amount * self::ITEM_PRICE;
 
         
         $req = array(
             'amount' => 10.00,
             'currency1' => 'USD',
-            'currency2' => 'BTC',
-            'buyer_email' => 'your_buyers_email@email.com',
+            'currency2' => 'ETC',
+            'buyer_email' => 'noahshasselbrink@gmail.com',
             'item_name' => 'Test Item/Order Description',
             'address' => '', // leave blank send to follow your settings on the Coin Settings page
             'ipn_url' => 'https://skin.auction/',

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login | CARRERCO</title>
+    <title>Login | SKINNY</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon"  href="{{ asset('assets/images/favicon.png')}}" />
@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('assets/global/css/swiper.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/global/css/style.css') }}" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
   </head>
   <body class="pg11-body">
 
@@ -23,14 +25,14 @@
       <div class="container login-img-container">
         <div class="row main-img-row text-center" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
           <div class="col">
-            <a href="/"><img src="{{ asset('assets/images/sitelogo.png')}}" /></a>
+            <a href="/"><img src="{{ asset('assets/images/malte.png')}}" /></a>
           </div>
         </div>
       </div>
       <div class="container login-form-container" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
         <div class="row">
           <div class="col">
-            <h1>Enter Email & Password to Continue.</h1>
+            <h1>Enter Email & Password to Continue</h1>
           </div>
         </div>
        
@@ -38,7 +40,7 @@
           <div class="col">
             <div class="input-group mb-3 my-group-field">
               <div class="input-group-prepend">
-                <span class="input-group-text person-img"></span>
+                <span class="input-group-text fas fa-user" style="font-size: 25px;"></span>
               </div>
 
               <input id="email" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" class=" my-form-control form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
@@ -55,7 +57,7 @@
           <div class="col">
             <div class="input-group mb-3 my-group-field">
               <div class="input-group-prepend">
-                <span class="input-group-text lock-img"></span>
+                <span class="input-group-text fas fa-lock" style="font-size: 25px;"></span>
               </div>
 
               <input id="password"  type="password" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" class="my-form-control form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Password">
@@ -78,7 +80,7 @@
         </div> --}}
         <div class="row">
           <div class="col text-center">
-               <button class="btn login-btn" type="submit"> Log In
+               <button class="btn login-btn" type="submit"><b> Log In</b>
                         </button>
             {{-- <button type="submit" class="btn login-btn">Login</button> --}}
           </div>

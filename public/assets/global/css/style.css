@@ -2265,14 +2265,14 @@ label.form-check-label.app-form-check {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: #ec6023;
+  background-color: #e00b0b;
 }
 .lock-img {
   background-image: url("../../images/lock.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px;
-  background-color: #ec6023;
+  background-color: #e00b0b;
 }
 
 span.input-group-text.person-img,
@@ -2296,7 +2296,8 @@ input.my-form-control {
   border-color: #707070;
 }
 .login-form-container h1 {
-  color: #ec6023;
+  /* color: #ec6023; */
+  color: #e00b0b;
   font-size: 30px;
   font-weight: 800;
   text-align: center;
@@ -2331,10 +2332,10 @@ input.my-form-control {
   max-width: 376px;
   width: 100%;
   margin: 0 auto;
-  border: 1px solid #ec6023;
+  border: 1px solid #e00b0b;
   border-radius: 50px;
   height: 45px;
-  background: #ec6023;
+  background: #e00b0b;
   color: white;
   font-size: 18px;
 }
