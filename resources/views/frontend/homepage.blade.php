@@ -1,55 +1,18 @@
 @extends('layouts.frontLayout')
 
 @section('customCSS')
-{{-- <style>
-  .test {
+
+<style>
+
+  .datatimeformat{
+    display: none;
+
+  }
+  .bid-button{
     display: none;
   }
 
-  ul.countdown {
-    list-style: none;
-    margin: 0px 0px;
-    padding: 0;
-    display: block;
-    color: #44c134;
-    text-align: center;
-  }
-
-  ul.countdown li {
-    display: inline-block;
-    height: 0px;
-  }
-
-  ul.countdown li span {
-    font-size: 56px;
-    font-weight: 300;
-    line-height: 40px;
-  }
-
-  ul.countdown li.seperator {
-    font-size: 56px;
-    line-height: 40px;
-    vertical-align: top;
-  }
-
-  ul.countdown li p {
-    color: #a7abb1;
-    font-size: 14px;
-  }
-
-  .button {
-    background-color: #4CAF50;
-    /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-  }
-</style> --}}
+</style>
 @endsection
 
 @section('content')
@@ -60,6 +23,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 hm-hide">
+      
+        
         <ul class="menu cf">
           <li>
             <a href="">Auctions<i class="fa fa-caret-down" aria-hidden="true" style="margin-left: 5px;"></i></a>
@@ -102,7 +67,7 @@
 
 </div>
 <!-- Banner Ends Here -->
-
+<h4 id="time"></h4>
 <div class="latest-products" style="background-image: url(assets/images/image-10.jpg);background-repeat: round;">
   <div class="container-fluid">
     <div class="row">
@@ -113,7 +78,7 @@
         </div>
       </div>
       @foreach($auctions as $auction)
-      <div class="col-md-6">
+      <div class="col-md-6 countdowns">
         <div class="product-item">
           <div class="item-list auction-list">
             <li class="anim-elem  live-auction">
@@ -154,18 +119,31 @@
                   <div class="auction-bidder">
                     <div class="the-bidder">
                       <div class="the-bidder">
-                        <span class="item-heading">Highest Bidder</span>
+                        <span>
+                          <p class="item-heading">Up Next</p>
+                          <p class="item-heading" style="line-height: 8px;">Get Ready to Bid</p>
+                        </span>
+                        {{-- <span class="item-heading">Highest Bidder</span>
                         <div class="logo-hm">LOGO</div>
-                        <h4 data-user-name=""><span class="animated bounceIn"><a target="_blank"
-                              href="#">Username</a></span></h4>
-                      </div>
+                        <h4 data-user-name="">
+                          <span class="animated bounceIn">
+                            <a target="_blank" href="#">Username</a>
+                          </span>
+                        </h4>
+                      </div> --}}
                     </div>
                   </div>
                   <div class="auction-time">
-                    <time data-live="" data-time-ms="0">
-                      
-                    </time>
-                    <button class="btn btn-default btn-lg" data-auction-id="2893"><span class="bid-cost"><i
+
+                    {{-- <div class="countdowns"> --}}
+                      <span class="datatimeformat">{{ $auction->auction_start_date }}</span>
+                      <time  data-live="" data-time-ms="0">
+                        <span class="unique" style="color: #fff;"></span>
+                      </time>
+                    {{-- </div> --}}
+                   
+                    
+                    <button class="btn btn-default btn-lg bid-button" data-auction-id="2893"><span class="bid-cost"><i
                           class="fa fa-circle"></i>{{$auction->bid_cost ? $auction->bid_cost : ''}}</span>
                       <div class="bid">PLACE BID</div>
                     </button>
@@ -178,400 +156,7 @@
         </div>
       </div>
       @endforeach
-      {{-- <div class="col-md-6">
-            <div class="product-item">
-              <div class="item-list auction-list">
-                <li class="anim-elem  live-auction">
-                  <div class="item-inner anim-02" style="background: url(assets/images/Mask-group-1.png), linear-gradient(to bottom right, #d32ce6 -170%, rgba(0,0,0,0.2) 70%);background-repeat: round;">
-                  <div data-auction-alert-popup="" class="overlay-dialog" style="display: none;"></div>
-                  <div class="item-info">
-                  <div class="item-title">
-                  <h3><a href="#">StatTrak™ Glock-18 | Water Elemental</a></h3>
-                  <span class="item-heading">Factory New</span>
-                  </div>
-                  <div class="item-rarity" style="color: #fff"> 
-                  StatTrak™ Classified Pistol
-                  </div>
-                  <div class="item-value">
-                  <span class="item-heading">Worth</span>
-                  <h4>$39.45</h4>
-                  </div>
-                  <nav class="button-group item-buttons">
-                  <ul>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-phone"></i></a></li>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-eye"></i></a></li>
-                  </ul>
-                  </nav>
-                  <div class="item-image"></div>
-                  </div>
-                  <div class="auction-info" data-auction-info-id="2893">
-                  <div class="auction-price">
-                  <h4 data-price="">
-                  <span class="">$4.96</span>
-                  </h4>
-                  <span class="item-heading">Current Price</span>
-                  </div>
-                  <div class="auction-bidder">
-                  <div class="the-bidder">
-                  <div class="the-bidder">
-                  <span class="item-heading">Highest Bidder</span>
-                  <div class="logo-hm">LOGO</div>
-                  <h4 data-user-name=""><span class="animated bounceIn"><a target="_blank" href="#">Username</a></span></h4>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="auction-time">
-                  
-                  <time data-live="" data-time-ms="0"></time>
-                  <button class="btn btn-default btn-lg" data-auction-id="2893"><span class="bid-cost"><i class="fa fa-circle"></i>20</span><div class="bid">PLACE BID</div></button>
-                  </div>
-                  </div>
-                  </div>
-                </li>
-              </div>
-            </div>
-          </div> --}}
-      {{--
-          <div class="col-md-6">
-            <div class="product-item">
-              <div class="item-list auction-list">
-                <li class="anim-elem  live-auction">
-                  <div class="item-inner anim-02" style="background: url(assets/images/Mask-group-1.png), linear-gradient(to bottom right, #d32ce6 -170%, rgba(0,0,0,0.2) 70%);background-repeat: round;">
-                  <div data-auction-alert-popup="" class="overlay-dialog" style="display: none;"></div>
-                  <div class="item-info">
-                  <div class="item-title">
-                  <h3><a href="#">StatTrak™ Glock-18 | Water Elemental</a></h3>
-                  <span class="item-heading">Factory New</span>
-                  </div>
-                  <div class="item-rarity" style="color: #fff"> 
-                  StatTrak™ Classified Pistol
-                  </div>
-                  <div class="item-value">
-                  <span class="item-heading">Worth</span>
-                  <h4>$39.45</h4>
-                  </div>
-                  <nav class="button-group item-buttons">
-                  <ul>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-phone"></i></a></li>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-eye"></i></a></li>
-                  </ul>
-                  </nav>
-                  <div class="item-image"></div>
-                  </div>
-                  <div class="auction-info" data-auction-info-id="2893">
-                  <div class="auction-price">
-                  <h4 data-price="">
-                  <span class="">$4.96</span>
-                  </h4>
-                  <span class="item-heading">Current Price</span>
-                  </div>
-                  <div class="auction-bidder">
-                  <div class="the-bidder">
-                  <div class="the-bidder">
-                  <span class="item-heading">Highest Bidder</span>
-                  <div class="logo-hm">LOGO</div>
-                  <h4 data-user-name=""><span class="animated bounceIn"><a target="_blank" href="#">Username</a></span></h4>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="auction-time">
-                  
-                  <time data-live="" data-time-ms="0"></time>
-                  <button class="btn btn-default btn-lg" data-auction-id="2893"><span class="bid-cost"><i class="fa fa-circle"></i>20</span><div class="bid">PLACE BID</div></button>
-                  </div>
-                  </div>
-                  </div>
-                </li>
-              </div>
-              
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-item">
-              <div class="item-list auction-list">
-                <li class="anim-elem  live-auction">
-                  <div class="item-inner anim-02" style="background: url(assets/images/Mask-group-1.png), linear-gradient(to bottom right, #d32ce6 -170%, rgba(0,0,0,0.2) 70%);background-repeat: round;">
-                  <div data-auction-alert-popup="" class="overlay-dialog" style="display: none;"></div>
-                  <div class="item-info">
-                  <div class="item-title">
-                  <h3><a href="#">StatTrak™ Glock-18 | Water Elemental</a></h3>
-                  <span class="item-heading">Factory New</span>
-                  </div>
-                  <div class="item-rarity" style="color: #fff"> 
-                  StatTrak™ Classified Pistol
-                  </div>
-                  <div class="item-value">
-                  <span class="item-heading">Worth</span>
-                  <h4>$39.45</h4>
-                  </div>
-                  <nav class="button-group item-buttons">
-                  <ul>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-phone"></i></a></li>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-eye"></i></a></li>
-                  </ul>
-                  </nav>
-                  <div class="item-image"></div>
-                  </div>
-                  <div class="auction-info" data-auction-info-id="2893">
-                  <div class="auction-price">
-                  <h4 data-price="">
-                  <span class="">$4.96</span>
-                  </h4>
-                  <span class="item-heading">Current Price</span>
-                  </div>
-                  <div class="auction-bidder">
-                  <div class="the-bidder">
-                  <div class="the-bidder">
-                  <span class="item-heading">Highest Bidder</span>
-                  <div class="logo-hm">LOGO</div>
-                  <h4 data-user-name=""><span class="animated bounceIn"><a target="_blank" href="#">Username</a></span></h4>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="auction-time">
-                  
-                  <time data-live="" data-time-ms="0"></time>
-                  <button class="btn btn-default btn-lg" data-auction-id="2893"><span class="bid-cost"><i class="fa fa-circle"></i>20</span><div class="bid">PLACE BID</div></button>
-                  </div>
-                  </div>
-                  </div>
-                </li>
-              </div>
-              
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-item">
-              <div class="item-list auction-list">
-                <li class="anim-elem  live-auction">
-                  <div class="item-inner anim-02" style="background: url(assets/images/Mask-group-1.png), linear-gradient(to bottom right, #d32ce6 -170%, rgba(0,0,0,0.2) 70%);background-repeat: round;">
-                  <div data-auction-alert-popup="" class="overlay-dialog" style="display: none;"></div>
-                  <div class="item-info">
-                  <div class="item-title">
-                  <h3><a href="#">StatTrak™ Glock-18 | Water Elemental</a></h3>
-                  <span class="item-heading">Factory New</span>
-                  </div>
-                  <div class="item-rarity" style="color: #fff"> 
-                  StatTrak™ Classified Pistol
-                  </div>
-                  <div class="item-value">
-                  <span class="item-heading">Worth</span>
-                  <h4>$39.45</h4>
-                  </div>
-                  <nav class="button-group item-buttons">
-                  <ul>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-phone"></i></a></li>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-eye"></i></a></li>
-                  </ul>
-                  </nav>
-                  <div class="item-image"></div>
-                  </div>
-                  <div class="auction-info" data-auction-info-id="2893">
-                  <div class="auction-price">
-                  <h4 data-price="">
-                  <span class="">$4.96</span>
-                  </h4>
-                  <span class="item-heading">Current Price</span>
-                  </div>
-                  <div class="auction-bidder">
-                  <div class="the-bidder">
-                  <div class="the-bidder">
-                  <span class="item-heading">Highest Bidder</span>
-                  <div class="logo-hm">LOGO</div>
-                  <h4 data-user-name=""><span class="animated bounceIn"><a target="_blank" href="#">Username</a></span></h4>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="auction-time">
-                  
-                  <time data-live="" data-time-ms="0"></time>
-                  <button class="btn btn-default btn-lg" data-auction-id="2893"><span class="bid-cost"><i class="fa fa-circle"></i>20</span><div class="bid">PLACE BID</div></button>
-                  </div>
-                  </div>
-                  </div>
-                </li>
-              </div>
-              
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-item">
-              <div class="item-list auction-list">
-                <li class="anim-elem  live-auction">
-                  <div class="item-inner anim-02" style="background: url(assets/images/Mask-group-1.png), linear-gradient(to bottom right, #d32ce6 -170%, rgba(0,0,0,0.2) 70%);background-repeat: round;">
-                  <div data-auction-alert-popup="" class="overlay-dialog" style="display: none;"></div>
-                  <div class="item-info">
-                  <div class="item-title">
-                  <h3><a href="#">StatTrak™ Glock-18 | Water Elemental</a></h3>
-                  <span class="item-heading">Factory New</span>
-                  </div>
-                  <div class="item-rarity" style="color: #fff"> 
-                  StatTrak™ Classified Pistol
-                  </div>
-                  <div class="item-value">
-                  <span class="item-heading">Worth</span>
-                  <h4>$39.45</h4>
-                  </div>
-                  <nav class="button-group item-buttons">
-                  <ul>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-phone"></i></a></li>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-eye"></i></a></li>
-                  </ul>
-                  </nav>
-                  <div class="item-image"></div>
-                  </div>
-                  <div class="auction-info" data-auction-info-id="2893">
-                  <div class="auction-price">
-                  <h4 data-price="">
-                  <span class="">$4.96</span>
-                  </h4>
-                  <span class="item-heading">Current Price</span>
-                  </div>
-                  <div class="auction-bidder">
-                  <div class="the-bidder">
-                  <div class="the-bidder">
-                  <span class="item-heading">Highest Bidder</span>
-                  <div class="logo-hm">LOGO</div>
-                  <h4 data-user-name=""><span class="animated bounceIn"><a target="_blank" href="#">Username</a></span></h4>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="auction-time">
-                  
-                  <time data-live="" data-time-ms="0"></time>
-                  <button class="btn btn-default btn-lg" data-auction-id="2893"><span class="bid-cost"><i class="fa fa-circle"></i>20</span><div class="bid">PLACE BID</div></button>
-                  </div>
-                  </div>
-                  </div>
-                </li>
-              </div>
-              
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-item">
-              <div class="item-list auction-list">
-                <li class="anim-elem  live-auction">
-                  <div class="item-inner anim-02" style="background: url(assets/images/Mask-group-1.png), linear-gradient(to bottom right, #d32ce6 -170%, rgba(0,0,0,0.2) 70%);background-repeat: round;">
-                  <div data-auction-alert-popup="" class="overlay-dialog" style="display: none;"></div>
-                  <div class="item-info">
-                  <div class="item-title">
-                  <h3><a href="#">StatTrak™ Glock-18 | Water Elemental</a></h3>
-                  <span class="item-heading">Factory New</span>
-                  </div>
-                  <div class="item-rarity" style="color: #fff"> 
-                  StatTrak™ Classified Pistol
-                  </div>
-                  <div class="item-value">
-                  <span class="item-heading">Worth</span>
-                  <h4>$39.45</h4>
-                  </div>
-                  <nav class="button-group item-buttons">
-                  <ul>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-phone"></i></a></li>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-eye"></i></a></li>
-                  </ul>
-                  </nav>
-                  <div class="item-image"></div>
-                  </div>
-                  <div class="auction-info" data-auction-info-id="2893">
-                  <div class="auction-price">
-                  <h4 data-price="">
-                  <span class="">$4.96</span>
-                  </h4>
-                  <span class="item-heading">Current Price</span>
-                  </div>
-                  <div class="auction-bidder">
-                  <div class="the-bidder">
-                  <div class="the-bidder">
-                  <span class="item-heading">Highest Bidder</span>
-                  <div class="logo-hm">LOGO</div>
-                  <h4 data-user-name=""><span class="animated bounceIn"><a target="_blank" href="#">Username</a></span></h4>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="auction-time">
-                  
-                  <time data-live="" data-time-ms="0"></time>
-                  <button class="btn btn-default btn-lg" data-auction-id="2893"><span class="bid-cost"><i class="fa fa-circle"></i>20</span><div class="bid">PLACE BID</div></button>
-                  </div>
-                  </div>
-                  </div>
-                </li>
-              </div>
-              
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-item">
-              <div class="item-list auction-list">
-                <li class="anim-elem  live-auction">
-                  <div class="item-inner anim-02" style="background: url(assets/images/Mask-group-1.png), linear-gradient(to bottom right, #d32ce6 -170%, rgba(0,0,0,0.2) 70%);background-repeat: round;">
-                  <div data-auction-alert-popup="" class="overlay-dialog" style="display: none;"></div>
-                  <div class="item-info">
-                  <div class="item-title">
-                  
-                  <h3><a href="#">StatTrak™ Glock-18 | Water Elemental</a></h3>
-                  <span class="item-heading">Factory New</span>
-                  </div>
-                  <div class="item-rarity" style="color: #fff"> 
-                  StatTrak™ Classified Pistol
-                  </div>
-                  <div class="item-value">
-                  <span class="item-heading">Worth</span>
-                  <h4>$39.45</h4>
-                  </div>
-                  <nav class="button-group item-buttons">
-                  <ul>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-phone"></i></a></li>
-                  <li><a href="#" class="item-inspect btn btn-info"><i class="fa fa-eye"></i></a></li>
-                  </ul>
-                  </nav>
-                  <div class="item-image"></div>
-                  </div>
-                  <div class="auction-info" data-auction-info-id="2893">
-                  <div class="auction-price">
-                  <h4 data-price="">
-                  <span class="">$4.96</span>
-                  </h4>
-                  <span class="item-heading">Current Price</span>
-                  </div>
-                  <div class="auction-bidder">
-                  <div class="the-bidder">
-                  <div class="the-bidder">
-                  <span class="item-heading">Highest Bidder</span>
-                  <div class="logo-hm">LOGO</div>
-                  <h4 data-user-name=""><span class="animated bounceIn"><a target="_blank" href="#">Username</a></span></h4>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="auction-time">
-                  
-                  <time data-live="" data-time-ms="0"></time>
-                  <button class="btn btn-default btn-lg" data-auction-id="2893"><span class="bid-cost"><i class="fa fa-circle"></i>20</span><div class="bid">PLACE BID</div></button>
-                  </div>
-                  </div>
-                  </div>
-                </li>
-              </div>
-              <!-- <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
-              
-                <div class="down-content">
-                <a href="#"><h4>Tittle goes here</h4></a>
-                <h6>$25.75</h6>
-                <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-                <ul class="stars">
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                </ul>
-                <span>Reviews (24)</span>
-
-              </div> -->
-            </div>
-          </div> --}}
+     
 
       <div class="col-md-12" style="margin-bottom: -40px;">
         <div class="section-heading">
@@ -741,4 +326,42 @@
 @endsection
 
 @section('customJS')
+<script>
+  $(document).ready(function(){
+
+    // countdowns
+    $(".countdowns").each(function () {
+
+      var t      = new Date($(this).find('.datatimeformat').text());
+      var p      = document.getElementById("time");
+      var unique = $(this).find('.unique');
+      var bid    = $(this).find('.bid-button');
+      console.log(t);
+      var timer = "";
+      var u = function () {
+        var delta = t - new Date();
+        console.log(delta);
+        var d = delta / (24 * 3600 * 1000) | 0;
+        var h = (delta %= 24 * 3600 * 1000) / (3600 * 1000) | 0;
+        var m = (delta %= 3600 * 1000) / (60 * 1000) | 0;
+        var s = (delta %= 60 * 1000) / 1000 | 0;
+        
+        if (delta < 0) {
+            clearInterval(timer);
+            unique.css('display','none');
+            bid.css('display','block');
+            // unique.text("timer's finished!");
+        } else {
+            $(this).css('display','block');
+            unique.text(d + "d " + h + "h " + m + "m " + s + "s");
+        }
+    }
+    timer = setInterval(u, 1000);
+
+    });
+  
+  });
+
+
+</script>
 @endsection

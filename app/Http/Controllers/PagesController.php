@@ -17,8 +17,9 @@ class PagesController extends Controller
 {
     public function HomePage()
     {
-        $models  = scandir(public_path()."/models");
+        $models   = scandir(public_path()."/models");
         $auctions = Auction::all();
+        // dd(strtotime($auctions[2]->auction_start_date));
         return view('frontend.homepage',compact('auctions'));
     }
 }

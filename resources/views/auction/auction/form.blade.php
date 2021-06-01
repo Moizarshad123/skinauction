@@ -1,5 +1,6 @@
 
 @push('css')
+
 <link href="{{asset('plugins/components/clockpicker/dist/jquery-clockpicker.min.css')}}" rel="stylesheet">
 <link href="{{asset('plugins/components/jquery-asColorPicker-master/css/asColorPicker.css')}}" rel="stylesheet">
 <link href="{{asset('plugins/components/bootstrap-datepicker/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css" />
@@ -7,10 +8,6 @@
 <link href="{{asset('plugins/components/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 
 @endpush
-
-
-
-
 <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
     {!! Form::label('name', 'Name', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
@@ -44,9 +41,10 @@
     </div>
 </div>
 <div class="form-group {{ $errors->has('auction_start_date') ? 'has-error' : ''}}">
-    {!! Form::label('auction_start_date', 'Auction Start Date', ['class' => 'col-md-4 control-label']) !!}
+    {!! Form::label('auction_start_date', 'Auction Start Date & Time', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::date('auction_start_date', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+        <input type="datetime-local"  class="form-control" name="auction_start_date">
+        {{-- {!! Form::datetime-local('auction_start_date', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!} --}}
         {!! $errors->first('auction_start_date', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

@@ -31,7 +31,7 @@ class AuctionController extends Controller
                 ->orWhere('price', 'LIKE', "%$keyword%")
                 ->orWhere('image', 'LIKE', "%$keyword%")
                 ->orWhere('auction_start_date', 'LIKE', "%$keyword%")
-                ->orWhere('auction_start_time', 'LIKE', "%$keyword%")
+                // ->orWhere('auction_start_time', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
             } else {
                 $auction = Auction::paginate($perPage);
@@ -56,7 +56,11 @@ class AuctionController extends Controller
   
     public function store(Request $request)
     {
-       
+        // dd(strtotime($request->auction_start_date));
+       $timestamps = date('Y-m-d H:i:s' , strtotime($request->auction_start_date));
+
+    //    dd(strtotime($timestamps));
+        // dd(date('Y-m-d H:i:s'), strtotime($request->auction_start_date));
         $model = str_slug('auction','-');
         if(auth()->user()->permissions()->where('name','=','add-'.$model)->first()!= null) {
             $this->validate($request, [
@@ -64,7 +68,7 @@ class AuctionController extends Controller
 			'price' => 'required',
 			'image' => 'required',
 			'auction_start_date' => 'required',
-			'auction_start_time' => 'required',
+			// 'auction_start_time' => 'required',
             'bid_cost' => 'required',
             'stock' => 'required',
 
@@ -76,8 +80,8 @@ class AuctionController extends Controller
             $auction->title              = $request->title;
             $auction->sub_title          = $request->sub_title;          
             $auction->price              = $request->price;
-            $auction->auction_start_date = $request->auction_start_date;
-            $auction->auction_start_time = $request->auction_start_time;
+            $auction->auction_start_date = $timestamps;
+            // $auction->auction_start_time = $request->auction_start_time;
             $auction->bid_cost           = $request->bid_cost;
             $auction->stock              = $request->stock;
             $auction->date               = date('Y-m-d');
@@ -126,7 +130,7 @@ class AuctionController extends Controller
 			'price' => 'required',
 			'image' => 'required',
 			'auction_start_date' => 'required',
-			'auction_start_time' => 'required'
+			// 'auction_start_time' => 'required'
 		]);
             // $requestData = $request->all();
             
@@ -139,7 +143,7 @@ class AuctionController extends Controller
             $auction->sub_title          = $request->sub_title;          
             $auction->price              = $request->price;
             $auction->auction_start_date = $request->auction_start_date;
-            $auction->auction_start_time = $request->auction_start_time;
+            // $auction->auction_start_time = $request->auction_start_time;
             $auction->bid_cost           = $request->bid_cost;
             $auction->stock              = $request->stock;
             $auction->date               = date('Y-m-d');
